@@ -1,4 +1,5 @@
 <?php
 session_start();
-$bdd = new PDO('mysql:host=127.0.0.1;dbname=classes','root','');
+$bdd = mysqli_connect('localhost' , 'root' , '' , 'classes');
+mysqli_set_charset($bdd, 'utf8');
 ?>

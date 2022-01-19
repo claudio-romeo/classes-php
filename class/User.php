@@ -9,14 +9,21 @@ class User
     public $firstname;
     public $lastname;
     
-    public function __construct()
+    public function __construct($login, $password, $email, $firstname, $lastname)
     {
-        
+      $this->login = $login;
+      $this->password = $password;
+      $this->email = $email;
+      $this->firstname = $firstname;
+      $this->lastname = $lastname;
+      var_dump($firstname);
     }
+
     public function register($login, $password, $email, $firstname, $lastname)
     {
-
+     
     }
+
     public function connect($login,$password)
     {
 
@@ -26,18 +33,22 @@ class User
     {
 
     }
+
     public function delete()
     {
 
     }
+
     public function udpate($login, $password, $email, $firstname, $lastname)
     {
 
     }
+
     public function isConnected()
     {
 
     }
+
     public function getAllInfos()
     {
 
@@ -60,8 +71,7 @@ class User
     }
 
 }
-
-
+$toto = new User('ee', 'rr', 'dd', 'er', 'ee');
 
 
 
