@@ -1,5 +1,29 @@
 <?php
 session_start();
-$bdd = mysqli_connect('localhost' , 'root' , '' , 'classes');
-mysqli_set_charset($bdd, 'utf8');
-?>
+class Db {
+    private  $_dbHost = "localhost";
+    private  $_dbUser = "root";
+    private  $_dbPassword = "";
+    private  $_dbName = "classes";
+
+private  $_bdd = null;
+
+public function __construct()
+{
+    
+}
+
+
+public function bdd()
+{
+    if($this->_bdd == NULL) 
+    {
+        $this->_bdd = new mysqli($this->_dbHost, $this->_dbUser, $this->_dbPassword, $this->_dbName,);
+        if ( $this->_bdd -> connect_errno) {
+            echo "Failed to connect to MySQL: " .  $this->_bdd -> connect_error;
+            exit();
+          }
+    }
+}
+}
+?> 
