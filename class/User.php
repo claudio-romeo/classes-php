@@ -5,27 +5,40 @@ class User extends Db
 {
     private $id;
     public $_login;
+    private $password;
     public $_email;
     public $_firstname;
     public $_lastname;
     
-    public function __construct($login, $password, $email, $firstname, $lastname)
+    public function __construct()
     {
-      $this->login = $login;
-      $this->password = $password;
-      $this->email = $email;
-      $this->firstname = $firstname;
-      $this->lastname = $lastname;
-      var_dump($firstname);
+      parent::__construct();
+      // $this->_login = $login;
+      // $this->_password = $password;
+      // $this->_email = $email;
+      // $this->_firstname = $firstname;
+      // $this->_lastname = $lastname;
+      // var_dump($firstname);
     }
 
     public function register($login, $password, $email, $firstname, $lastname)
     {
-      
+      // on commencer par hash le mdp 
+      $password = password_hash($password, PASSWORD_DEFAULT);
+    
+
+      // ensuite on faite une requete en base de donné pour inscrire l'utilisateur 
+        $requete = ("INSERT INTO utilisateurs (login, password , email , firstname , lastname) VALUES ($login,$password,$email,$firstname,$lastname)");
+
+        mysqli_query($this->_bdd, $requete);
     }
 
     public function connect($login,$password)
     {
+      // on verifie que le login que l'utilisateur ma fourni est bien en BDD 
+      if(isset())
+
+      // on verify si le mdp est correct
 
     }
 
@@ -71,7 +84,14 @@ class User extends Db
     }
 
 }
-$toto = new User('ee', 'rr', 'dd', 'er', 'ee');
+$toto = new User();
+$isConnected = $toto->connect($_POST['login'], $pass);
+
+if($isConnected == true) {
+
+  header();
+  $toto->_login;
+} else
 
 
 
